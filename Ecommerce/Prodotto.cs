@@ -16,8 +16,8 @@ namespace Ecommerce
         private string _descrizione;
         private double _prezzo;
 
-        private const char Sp = ';';
-        private Random rnd = new Random();
+        protected const char Sp = ';';
+        protected Random rnd = new Random();
 
         //properties
         public string Id
@@ -109,7 +109,7 @@ namespace Ecommerce
         }
 
         //funzioni private
-        private string GeneraId()
+        protected string GeneraId()
         {
             int lung = 10;
             char[] id = new char[lung];
