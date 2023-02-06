@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace Ecommerce
 {
-    public class Prodotto
+    public abstract class Prodotto
     {
 
         //variabili
-        private string _id;
-        private string _nome;        
-        private string _produttore;
-        private string _descrizione;
-        private double _prezzo;
+        private string _id, _nome, _produttore, _descrizione;       
+        private double _prezzo, _sconto;
+        
+        protected DayOfWeek Giorno { get; set; }
 
         protected const char Sp = ';';
         protected Random rnd = new Random();
@@ -74,6 +73,16 @@ namespace Ecommerce
             }
             private set { _prezzo = value; }
         }
+        protected double Sconto
+        {
+            get
+            {
+                if (_sconto < 0)
+                    throw new Exception("Sconto invalido");
+                else return _sconto;
+            }
+            set { _sconto = value; }
+        }
 
 
         //costruttori
@@ -94,22 +103,15 @@ namespace Ecommerce
             string str = this.Id + Sp + this.Nome + Sp + this.Produttore + Sp + this.Descrizione + Sp + this.Prezzo;
             return str;
         }
-        public bool Equals(string id)
+        public virtual bool Equals(string id)
         {
             if (this.Id == id)
                 return true;
             return false;
-        }
-        public Prodotto Clone()
-        {
-            Prodotto p = new Prodotto(this);
-            p.Id = this.Id;
-            return p;
-            
-        }
+        }       
 
         //funzioni private
-        protected string GeneraId()
+        private string GeneraId()
         {
             int lung = 10;
             char[] id = new char[lung];
@@ -121,6 +123,12 @@ namespace Ecommerce
             }
             string str = new string(id);
             return str;
+        }
+        public virtual double getPrezzoScontato()
+        {
+            double scontato = Prezzo;
+            scontato = (100 - Sconto) * Prezzo / 100;
+            return scontato;
         }
     }
 }

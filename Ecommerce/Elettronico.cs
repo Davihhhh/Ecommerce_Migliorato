@@ -9,38 +9,40 @@ namespace Ecommerce
     public class Elettronico : Prodotto
     {
         //variabili
-        private string _modello;       
-        private string _giorno;
-        private double _sconto = 5;   
+        private string _modello;                    
 
         //properties
         public string Modello
-        { get { return _modello; } private set { _modello = value; } }
-        public double Sconto
-        { get { return _sconto; } private set { _sconto = value; } }
-        public string Giorno
-        { get { return _giorno; } private set { _giorno = value; } }       
-        public override double Prezzo
-        { get { return Prezzo; } }
+        { get { return _modello; } private set { _modello = value; } }      
+              
+        
 
         //costruttori
         public Elettronico(string nome, string modello, string descrizione, string produttore, double prezzo) : base(nome, descrizione, produttore, prezzo)
         {        
-            Modello = modello; 
-            
+            Modello = modello;
+            Sconto = 5;
         }
 
         //funzioni
-        private double GetPrezzoScontato()
+        public override double getPrezzoScontato()
         {
-           
+            string day = GiornoDellaSettimana();
+            double scontato;
+            if (day == "Monday")
+                scontato = (100 - Sconto) * Prezzo / 100;
+            else return Prezzo;
+            return scontato;
         }
         private string GiornoDellaSettimana()
         {
-            DayOfWeek giorno = DateTime.Today.DayOfWeek;
-            return giorno.ToString();
+            Giorno = DateTime.Today.DayOfWeek;
+            return Giorno.ToString();
         }
-        
-        
+        public override string ToString()
+        {
+            string str = this.Id + Sp + this.Nome + Sp + this.Modello + Sp + this.Produttore + Sp + this.Descrizione + Sp + this.Prezzo;
+            return str;
+        }
     }
 }

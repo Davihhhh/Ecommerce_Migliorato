@@ -68,7 +68,7 @@ namespace Ecommerce
                 int limite = quantità + Contatore;
                 for (int a = Contatore; a < limite; a++)
                 {
-                    Lista[a] = p.Clone();
+                    //Lista[a] = p.Clone();
                     Contatore++;
                 }                      
             }

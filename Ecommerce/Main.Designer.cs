@@ -28,7 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // textBox
+            // 
+            this.textBox.Location = new System.Drawing.Point(208, 159);
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(362, 20);
+            this.textBox.TabIndex = 0;
             // 
             // Main
             // 
@@ -36,13 +44,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(895, 492);
+            this.Controls.Add(this.textBox);
             this.Name = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox textBox;
     }
 }
 
