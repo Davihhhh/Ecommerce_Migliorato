@@ -20,8 +20,10 @@ namespace Ecommerce
         Prodotto prova1 = new Elettronico("nome", "modello", "descrzione", "produttore", 20.0);
         private void Main_Load(object sender, EventArgs e)
         {
-
-            //textBox.Text = DateTime.Now.ToString();
+            DateTime today = DateTime.Today;
+            string str = "20, 10, fds2000";
+            DateTime compare = DateTime.Parse(str);
+;            textBox.Text = compare.ToString();
             //textBox.Text = prova1.getPrezzoScontato().ToString();
         }
 
