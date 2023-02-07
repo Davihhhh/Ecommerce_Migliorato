@@ -21,5 +21,9 @@ namespace Ecommerce
                     _grammatura = value;
             }
         }
+        public Foglio_Stampa(string nome, string descrizione, string grammatura, string produttore, double prezzo) : base(nome, descrizione, produttore, prezzo)
+        {
+            Grammatura = grammatura;
+        }
     }
 }

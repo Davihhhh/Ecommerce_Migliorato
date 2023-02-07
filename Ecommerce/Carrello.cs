@@ -98,7 +98,18 @@ namespace Ecommerce
                 }
             }
         }
-        public Prodotto RimuoviTuttiProdottiUguali(Prodotto p)
+        public void RimuoviProdottoConPosizione(int posizione)
+        {
+            if (Contatore <= 0)
+            {
+                throw new Exception("Carrello vuoto o invalido");
+            }
+            else
+            {
+                RicompattazioneConQuantità(posizione, 1);                           
+            }
+        }
+        public void RimuoviTuttiProdottiUguali(Prodotto p)
         {
             if (Contatore <= 0)
             {
@@ -115,7 +126,6 @@ namespace Ecommerce
                 {
                     int quantità = RicercaQuantitàProdotto(p.Id);
                     RicompattazioneConQuantità(pos, quantità);
-                    return p;
                 }
             }
         }
