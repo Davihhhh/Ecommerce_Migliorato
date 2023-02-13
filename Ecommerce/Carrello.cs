@@ -140,6 +140,35 @@ namespace Ecommerce
             return Lista;
         }
 
+        public double getPrezzo()
+        {
+            if (Lista == null || Contatore <= 0)
+                throw new Exception("Lista invalida");
+            else
+            {
+                double totale = 0;
+                for(int a = 0; a < Contatore; a++)
+                {
+                    totale = Lista[a].Prezzo + totale;
+                }
+                return totale;
+            }
+        }
+        public double getPrezzoScontato()
+        {
+            if (Lista == null || Contatore <= 0)
+                throw new Exception("Lista invalida");
+            else
+            {
+                double totale = 0;
+                for (int a = 0; a < Contatore; a++)
+                {
+                    totale = Lista[a].getPrezzoScontato() + totale;
+                }
+                return totale;
+            }
+        }
+
 
         //funzioni private
         private string GeneraId()

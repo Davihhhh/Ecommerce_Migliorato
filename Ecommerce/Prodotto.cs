@@ -130,5 +130,10 @@ namespace Ecommerce
             scontato = (100 - Sconto) * Prezzo / 100;
             return scontato;
         }
+
+        /*public virtual Prodotto Clone(Prodotto p)
+        {
+            return new Prodotto(p);
+        }*/
     }
 }

@@ -62,9 +62,16 @@ namespace Ecommerce
             string produttore = textBoxProduttore.Text;
             string descrizione = textBoxDescrizione.Text;
             double prezzo = 0;
-            Prodotto p;
-            try { prezzo = Convert.ToDouble(textBoxPrezzo.Text); } catch { MessageBox.Show("Prezzo inadeguato"); }
-            try { }
+            Prodotto p;           
+            if (string.IsNullOrEmpty(nome) || string.IsNullOrEmpty(produttore) || string.IsNullOrEmpty(descrizione))
+            {
+                MessageBox.Show("Inserisci tutti i valori richiesti");
+            }
+            else
+            {
+                try { prezzo = Convert.ToDouble(textBoxPrezzo.Text); } catch { MessageBox.Show("Prezzo inadeguato"); return; }
+
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
